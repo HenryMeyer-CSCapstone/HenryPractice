@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">Ask for support</h1>
+    </div>
+    <div class="col">
+        <a href="/support/new" class="btn btn-primary btn-sm mt-5" role="button">New Support</a>
+    </div>
+</div>
+
+{% if supports %}
+    {% for support in supports %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/support/{{support.id}}">
+                    {{moment(support.createdate).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{support.author.fname}} {{support.author.lname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Full Name</h3>
+                {% endif %}
+                {{support.fullname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Gender</h3>
+                {% endif %}
+                {{support.gender}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Age</h3>
+                {% endif %}
+                {{support.ageage}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">About Me</h3>
+                {% endif %}
+                {{support.aboutme}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+
+{% endif %}
+
+{% endblock %}

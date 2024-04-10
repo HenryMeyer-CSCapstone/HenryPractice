@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if support %}
+    {{moment(support.createdate).calendar()}} by {{support.author.fname}} {{support.author.lname}} 
+    {% if support.modifydate %}
+        modified {{moment(support.modifydate).calendar()}}
+    {% endif %}
+    <br>
+    {% if support.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Support" href="/support/delete/{{support.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Support" href="/support/edit/{{support.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <p class="fs-3 text-break">
+        {% if support.author.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(support.author.image.read())}}">
+        {% endif %}
+
+        Full Name: {{support.fullname}} <br>
+        Gender: {{support.gender}} <br>
+        Age: {{support.ageage}} <br>
+        About Me: {{support.aboutme}} <br>
+
+    </p>
+
+{% endif %}
+
+{% endblock %}

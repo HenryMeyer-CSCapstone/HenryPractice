@@ -34,6 +34,8 @@ class User(UserMixin, Document):
     adult_fname = StringField()
     adult_lname = StringField()
     adult_email = StringField()
+    role = StringField()
+    age = IntField()
     consent = BooleanField(default=False)
 
     meta = {
@@ -94,6 +96,19 @@ class Clinic(Document):
     lat = FloatField()
     lon = FloatField()
     
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Support(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE)
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    fullname = StringField()
+    gender = StringField()
+    ageage = IntField()
+    aboutme = StringField()
+
     meta = {
         'ordering': ['-createdate']
     }
