@@ -1,3 +1,11 @@
 html body {
-    background-color: #9bbeeb;
+    background-color: #1a756e;
+    color: rgb(255, 255, 255);
+    font-family: "Times New Roman", Times, serif;
+  }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
   }

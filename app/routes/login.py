@@ -122,7 +122,7 @@ def callback():
         glname = userinfo_response.json().get("family_name","")
     else:
         return "User email not available or not verified by Google.", 400
-
+    
     # Get user from DB or create new user
     try:
         thisUser=User.objects.get(email=gmail)

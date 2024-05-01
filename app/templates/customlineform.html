@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <h1>Create Your Own Custom BART Train Line!</h1>
+
+        <form method=post>
+            {{ form.hidden_tag() }}
+
+            <p>
+            {{ form.line.label }} <br>
+            {{ form.line(size=64) }}
+            {% for error in form.line.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+
+            <p>
+            {{ form.stations.label }} <br>
+            {{ form.stations(size=64) }}
+            {% for error in form.stations.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+
+            <p>
+            {{ form.length.label }} <br>
+            {{ form.length(size=64) }}
+            {% for error in form.length.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+
+            <p>
+            {{ form.nightservice.label }} <br>
+            {{ form.nightservice(size=64) }}
+            {% for error in form.nightservice.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+
+            <p>
+            {{ form.fstop.label }} <br>
+            {{ form.fstop(size=64) }}
+            {% for error in form.fstop.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+
+            <p>
+            {{ form.lstop.label }} <br>
+            {{ form.lstop(size=64) }}
+            {% for error in form.lstop.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+            
+            {{form.submit()}}
+        </form>
+        
+{% endblock %}

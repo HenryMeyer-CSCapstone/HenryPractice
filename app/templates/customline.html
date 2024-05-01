@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if customLine %}
+
+<h1 class="display-1">
+    My Custom Line
+    <a href="/custom/edit/{{customLine.id}}">
+        <img width="40" src="/static/edit.png">
+    </a>
+    <a href="/custom/delete/{{customLine.id}}">
+        <img width="40" src="/static/delete.png">
+    </a>
+</h1>
+<div class="row">
+    
+    <div class="col display-5">
+        Your Line Name: {{customLine.line}} <br>
+        Stations: {{customLine.stations}} <br>
+        Length: {{customLine.length}} <br>
+        Night Service: {{customLine.nightservice}} <br>
+        First Stop: {{customLine.fstop}} <br>
+        Last Stop: {{customLine.lstop}} <br>
+        <hr>
+
+    </div>
+</div>
+<br>
+
+{% else %}
+    No Custom Line Yet
+{% endif %}
+
+{% endblock %}

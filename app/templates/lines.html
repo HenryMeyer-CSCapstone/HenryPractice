@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display">All Custom Lines</h1>
+    </div>
+</div>
+
+{% if lines %}
+    {% for customLine in lines %}
+        <div class="row border-bottom">
+
+        
+
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3>Creator</h3>
+                {% endif %}
+                {{customLine.creator.fname}} {{customLine.creator.lname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Line Name</h3>
+                {% endif %}
+                {{customLine.line}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3># of Stations</h3>
+                {% endif %}
+                {{customLine.stations}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Line Length</h3>
+                {% endif %}
+                {{customLine.length}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Night Service</h3>
+                {% endif %}
+                {{customLine.nightservice}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>First Stop</h3>
+                {% endif %}
+                {{customLine.fstop}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Last Stop</h3>
+                {% endif %}
+                {{customLine.lstop}}
+            </div>
+            <div clas="col">
+                <a data-toggle="tooltip" data-placement="top" title="Edit Line" href="/custom/edit/{{customLine.id}}">
+                    <img width="20" class="bottom-image" src="/static/edit.png">
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Delete Line" href="/custom/delete/{{customLine.id}}">
+                    <img width="20" class="bottom-image" src="/static/delete.png">
+                </a>
+        </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No Lines</h1>
+{% endif %}
+
+{% endblock %}
